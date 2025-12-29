@@ -1,5 +1,5 @@
 from mcp.server import Server
-from app import resources, tools
+from app import resources, tools, prompt
 
 server = Server(
     name="simple mcp server",
@@ -17,6 +17,10 @@ def health_ckeck():
 @server.read_resource("info://project")
 def project_info():
     return resources.project_info()
+
+@server.get_prompt("system")
+def system_prompt():
+    return prompt.system_prompt()
 
 
 def main():
