@@ -1,5 +1,5 @@
 from mcp.server import Server
-from app import tools
+from app import resources, tools
 
 server = Server(
     name="simple mcp server",
@@ -13,3 +13,16 @@ def add_numbers(a: int, b: int):
 @server.tool()
 def health_ckeck():
     return 
+
+@server.read_resource("info://project")
+def project_info():
+    return resources.project_info()
+
+
+def main():
+    server.run()
+
+if __name__ == "__main__":
+    main()
+
+
